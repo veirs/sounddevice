@@ -1,61 +1,41 @@
-# Dockerfile to setup sounddevices on Rpi
+#!/bin/bash
 
-#https://www.balena.io/docs/learn/develop/dockerfile/
-FROM balenalib/raspberry-pi-node
+FROM resin/raspberry-pi-node:8
 
-# enable container init system.
-ENV INITSYSTEM on
-
-
-MAINTAINER Val <vveirs@coloradocollege.edu>
+MAINTAINER Val V <vveirs@coloradocollege.edu>
 
 #upgrade OS
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
-
-# Set default command to bash as a placeholder
-CMD ["/bin/bash"]
-
-# Make sure we're the root user
-USER root
-
-WORKDIR /root
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    # General tools
-    htop \
-    nano \
-    sox \
-    tmux \
-    wget
 
 #install ALSA
 RUN apt-get install alsa-base alsa-oss alsa-utils alsa-tools mpg123
 RUN apt-get install libasound-dev
 
-#get and compile portaudio
-RUN ["wget", "http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz"]
-RUN tar xzf pa_stable_v190600_20161030.tgz
-RUN ls
-RUN pwd
-RUN ["cd", "portaudio"]
-RUN ls
-RUN pwd
-RUN ["./configure"]
-RUN ["make"]
 
+# Set default command to bash as a placeholder
+CMD ["/bin/bash"]
 
-#install Python and pip
-RUN apt-get install python3
+#install Python and pip  I guess this is pip3
+RUN apt-get install python3-dev
 RUN apt-get install python3-pip
+RUN echo $(which pip3)
 
-#install sounddevice
-RUN python3 -m pip3 install sounddevice
+RUN apt-get install apt-utils
+RUN apt-get install python3-numpy
 
-#list sound devices
-RUN python3 -m sounddevice
+#install portaudio
+RUN apt-get install libportaudio2
 
-#run a python script
-ADD PinkPanther30_a.wav /
+RUN apt-get autoremove
+
+#install sounddevice and SoundFile
+RUN pip3 install sounddevice
+RUN apt-get install libsndfile1
+RUN pip3 install SoundFile
+
 ADD playFile.py /
-CMD python3 playFile.py 
+ADD PinkPanther30_a.wav /
+RUN echo "\n.\n.\n..............................ls"
+RUN echo $(ls)
+#RUN ["python3", "playFile.py"]
 

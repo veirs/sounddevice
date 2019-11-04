@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 # play a wav file
 import sounddevice as sd
 import soundfile as sf
-
-data, fs = sf.read("PinkPanther30_a.wav", dtype = 'float32')
+data, fs = sf.read("PinkPanther30_a.wav", dtype = "float32")
 print("sample rate=",fs)
-sd.play(data, fs, device = 'hw:0,1')
+sd.play(data, fs)
