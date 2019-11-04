@@ -24,7 +24,7 @@ Python 3.4.2 (default, Sep 16 2019, 19:58:00)
 
 Type "help", "copyright", "credits" or "license" for more information.
 
-... import sounddevice as sd
+>>> import sounddevice as sd
 
 >>> import soundfile as sf
 
