@@ -16,10 +16,12 @@ But...........
 
 Spawning shell...
 root@067a8ce:/# python3
+
 Python 3.4.2 (default, Sep 16 2019, 19:58:00) 
+
 [GCC 4.9.2] on linux
+
 Type "help", "copyright", "credits" or "license" for more information.
->>> # play a wav file
 ... import sounddevice as sd
 >>> import soundfile as sf
 >>> data, fs = sf.read("PinkPanther30_a.wav", dtype = "float32")
@@ -32,11 +34,13 @@ sample rate= 44100
     no sound comes from the ear phones
 
 root@067a8ce:/# python3 playFile.py
+
 sample rate= 44100
 
 -----------------------And,if the file is executed directly, again, the sound  does not play
 
 root@067a8ce:/# ./playFile.py
+
 sample rate= 44100
 
 root@067a8ce:/# 
