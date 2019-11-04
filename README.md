@@ -12,7 +12,7 @@ But...........
 -------------------------Here is a screen grab from balena-cloud's terminal window where I started
    python3 and then pasted in the code that is in the playFile.py file
 
-   Listening with ear phones is sounds great :)
+   Listening with ear phones sounds great :)
 
 Spawning shell...
 root@067a8ce:/# python3
