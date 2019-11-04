@@ -22,12 +22,19 @@ Python 3.4.2 (default, Sep 16 2019, 19:58:00)
 [GCC 4.9.2] on linux
 
 Type "help", "copyright", "credits" or "license" for more information.
+
 ... import sounddevice as sd
+
 >>> import soundfile as sf
+
 >>> data, fs = sf.read("PinkPanther30_a.wav", dtype = "float32")
+
 >>> print("sample rate=",fs)
+
 sample rate= 44100
+
 >>> sd.play(data, fs)
+
 >>> exit()
 
 -----------------------However, when the playFile.py file is called directly, the sample rate is printed but
