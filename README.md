@@ -34,7 +34,7 @@ sample rate= 44100
 root@067a8ce:/# python3 playFile.py
 sample rate= 44100
 
------------------------And,if the file is executed directly, again, the sound does not play
+-----------------------And,if the file is executed directly, again, the sound  does not play
 
 root@067a8ce:/# ./playFile.py
 sample rate= 44100
