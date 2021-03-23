@@ -8,10 +8,9 @@ MAINTAINER Val V <vveirs@coloradocollege.edu>
 #upgrade OS
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
-#install ALSA
+#install ALSA  ### don't need this any longer with buster
 #RUN apt-get install alsa-base alsa-oss alsa-utils alsa-tools mpg123
 RUN apt-get install -y libasound-dev
-
 
 # Set default command to bash as a placeholder
 CMD ["/bin/bash"]
@@ -38,5 +37,5 @@ ADD playFile.py /
 ADD PinkPanther30_a.wav /
 RUN echo "\n.\n.\n..............................ls"
 RUN echo $(ls)
-RUN ["python3", "playFile.py"]
+RUN ["python3", "playFile.py"] # this should play the wav file on the default output port
 
