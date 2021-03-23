@@ -22,8 +22,6 @@ RUN apt-get install -y python3-pip
 RUN echo $("which pip3")
 RUN echo $(which pip3)    #  WHY IS pip3 NOT reporting its location?  It is used to install stuff below
 
-
-<<<<<<< HEAD
 #RUN apt-get install -y python3-numpy
 RUN pip3 install numpy
 =======
