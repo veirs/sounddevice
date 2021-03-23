@@ -20,10 +20,10 @@ CMD ["/bin/bash"]
 RUN apt-get install -y python3-dev
 RUN apt-get install -y python3-pip
 RUN echo $("which pip3")
-RUN echo $(which pip3)
+RUN echo $(which pip3)    #  WHY IS pip3 NOT reporting its location?  It is used to install stuff below
 
 
-RUN apt-get install -y python3-numpy
+RUN apt-get install -y python3-numpy  #  THIS DOES NOT SEEM TO INSTALL numpy -- is there a sudo permissions issue?
 
 #install portaudio
 RUN apt-get install -y libportaudio2
