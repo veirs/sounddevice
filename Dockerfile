@@ -23,7 +23,8 @@ RUN echo $("which pip3")
 RUN echo $(which pip3)
 
 
-RUN apt-get install -y python3-numpy
+#RUN apt-get install -y python3-numpy
+RUN pip3 install numpy
 
 #install portaudio
 RUN apt-get install -y libportaudio2
@@ -34,6 +35,8 @@ RUN apt-get autoremove
 RUN pip3 install sounddevice
 RUN apt-get install -y libsndfile1
 RUN pip3 install SoundFile
+
+COPY playFile.py ./
 
 ADD playFile.py /
 ADD PinkPanther30_a.wav /
