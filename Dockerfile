@@ -7,8 +7,9 @@ MAINTAINER Val V <vveirs@coloradocollege.edu>
 
 #upgrade OS
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
+RUN apt-get install -y apt-utils
 
-#install ALSA  ### don't need this any longer with buster
+#install ALSA   ### don't need this any longer with buster
 #RUN apt-get install alsa-base alsa-oss alsa-utils alsa-tools mpg123
 RUN apt-get install -y libasound-dev
 
@@ -18,9 +19,10 @@ CMD ["/bin/bash"]
 #install Python and pip  I guess this is pip3
 RUN apt-get install -y python3-dev
 RUN apt-get install -y python3-pip
+RUN echo $("which pip3")
 RUN echo $(which pip3)
 
-RUN apt-get install -y apt-utils
+
 RUN apt-get install -y python3-numpy
 
 #install portaudio
@@ -37,5 +39,5 @@ ADD playFile.py /
 ADD PinkPanther30_a.wav /
 RUN echo "\n.\n.\n..............................ls"
 RUN echo $(ls)
-RUN ["python3", "playFile.py"] # this should play the wav file on the default output port
+RUN ["python3", "playFile.py"]  # this should play the wav file on the default output port
 
