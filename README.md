@@ -8,5 +8,7 @@ Libraries and programs include libsound, python3, pip3, numpy, portaudio, soundd
 It seems that these should allow an image to be built that will run on a RaspberryPi 3B
 
 docker commands:
+
 docker build -t "docker_sd_0:v1" .
+
 docker container run --privileged -d docker_sd_0:v1
