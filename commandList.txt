@@ -1,0 +1,56 @@
+
+download Raspberry PI OS Lite ( https://www.raspberrypi.org/software/operating-systems/ )
+
+unzip to RasbianOS folderhttps://www.linuxquestions.org/questions/showthread.php?p=6073174#post6073174
+
+Run BalenaEtcher to flash OS onto SD card
+
+val@val-asus:~$ cd /media/val
+val@val-asus:/media/val$ ls
+boot  KINGSTON  rootfs
+val@val-asus:/media/val$ cd boot
+val@val-asus:/media/val/boot$ touch ssh
+val@val-asus:cd ~/
+
+open connection to router and under Status->Device Table not any rPi ip addresses
+put SD into Rpi with wired ethernet connected and power up
+
+refresh router list and find the IP address of the new rPi
+
+in command window try 
+ssh pi@192.168.0.12
+type yes to fingerprint question
+enter default password: raspberry
+
+as pi, type passwd and change it.  New password is HTI_hydrophone
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+sudo sh get-docker.sh
+
+include pi in group that can use docker w/o root
+sudo usermod -aG docker pi
+
+sudo apt install -y git
+
+logout and then back in
+
+git clone https://github.com/veirs/sounddevice.git
+
+pi@raspberrypi:~ $ cd sounddevice
+pi@raspberrypi:~/sounddevice $ ls
+docker-compose.yml  Dockerfile_0         playFile_0.py  README.md
+Dockerfile          PinkPanther30_a.wav  playFile.py
+
+docker commands:
+docker build -t "docker_sd_0:v1" .
+
+log of docker build:  "build.log"
+fails with : sounddevice.PortAudioError: Error querying device -1
+
+
+
+
+docker container run --privileged -d docker_sd_0:v1
+
+
