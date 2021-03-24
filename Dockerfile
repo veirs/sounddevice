@@ -9,8 +9,9 @@ MAINTAINER Val V <vveirs@coloradocollege.edu>
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 RUN apt-get install -y apt-utils
 
-#install ALSA   ### don't need this any longer with buster
-#RUN apt-get install alsa-base alsa-oss alsa-utils alsa-tools mpg123
+#install ALSA   ### MAYBE don't need this any longer with buster
+#RUN apt-get install -y alsa-base
+RUN apt-get install -y alsa-oss alsa-utils alsa-tools mpg123
 RUN apt-get install -y libasound-dev
 
 # Set default command to bash as a placeholder
@@ -22,10 +23,7 @@ RUN apt-get install -y python3-pip
 RUN echo $("which pip3")
 RUN echo $(which pip3)    #  WHY IS pip3 NOT reporting its location?  It is used to install stuff below
 
-#RUN apt-get install -y python3-numpy
 RUN pip3 install numpy
-
-RUN apt-get install -y python3-numpy  #  THIS DOES NOT SEEM TO INSTALL numpy -- is there a sudo permissions issue?
 
 #install portaudio
 RUN apt-get install -y libportaudio2
