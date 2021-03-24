@@ -2,6 +2,8 @@ README file
 
 This docker file is used to build an image that installs libraries needed to run 
     sounddevices in python3 ( https://python-sounddevice )
+    
+Commands to build are listed in commandsList.txt file
 
 Libraries and programs include libsound, python3, pip3, numpy, portaudio, sounddevice, SoundFile
 
