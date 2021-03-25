@@ -37,12 +37,12 @@ RUN pip3 install SoundFile
 
 COPY playFile.py ./
 ADD playFile.py /
-COPY wireALC_3.py ./
-ADD wireALC_3.py /
+COPY hydroListen.py ./
+ADD hydroListen.py /
 
 
-ADD PinkPanther30_a.wav /
-RUN echo "\n.\n.\n..............................ls"
-RUN echo $(ls)
+#ADD PinkPanther30_a.wav /
+#RUN echo "\n.\n.\n..............................ls"
+#RUN echo $(ls)
 #RUN ["python3", "playFile.py"]  # this should play the wav file on the default output port
 
