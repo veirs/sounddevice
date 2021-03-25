@@ -41,5 +41,5 @@ ADD playFile.py /
 ADD PinkPanther30_a.wav /
 RUN echo "\n.\n.\n..............................ls"
 RUN echo $(ls)
-RUN ["python3", "playFile.py"]  # this should play the wav file on the default output port
+#RUN ["python3", "playFile.py"]  # this should play the wav file on the default output port
 
