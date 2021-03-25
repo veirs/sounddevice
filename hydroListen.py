@@ -48,8 +48,7 @@ def callback(indata, outdata, frames, time, status):
     gain = args.ALC_volume/aveInput
     bufferCnt += 1
     if bufferCnt % 100 == 0:
-        print("Input Volume=",volume_norm, "Average Input=", aveInput, "Gain =", gain)
-    
+        print("Input Volume = {:0.2f} Average Input = {:0.2f} Gain = {:0.2f}".format(volume_norm, aveInput, gain)    
     indata = indata * gain
     outdata[:] = indata
 
