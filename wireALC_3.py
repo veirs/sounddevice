@@ -31,7 +31,7 @@ parser.add_argument('-l', '--latency', type=float, help='latency in seconds')
 parser.add_argument('-v', '--ALC_volume', type=float, help='desired volume ~2 usually')
 parser.add_argument('-a', '--averaging',type=float,help='fraction of new data ~0.05 usually')
 args = parser.parse_args()
-print(args)
+print("args=", args)
 aveInput = 1
 bufferCnt = 0
 frac1 = args.averaging
@@ -39,16 +39,16 @@ frac2 = 1.0-frac1
 
 import sounddevice as sd
 
-def callback(indata, outdata, frames, time, status):
+def callback(indata, outdata, frames, time, status):git config --global user.name
     global aveInput, bufferCnt
     if status:
-        print(status)
+        print("status = ", status)
     volume_norm = np.linalg.norm(indata)
     aveInput = frac2*aveInput + frac1*volume_norm
     gain = args.ALC_volume/aveInput
     bufferCnt += 1
-    if bufferCnt % 10 == 0:
-        print("Input Volume=",volume_norm, "Gain =", gain)
+    if bufferCnt % 100 == 0:
+        print("Input Volume=",volume_norm, "Average Input=", aveInput, "Gain =", gain)
     
     indata = indata * gain
     outdata[:] = indata
