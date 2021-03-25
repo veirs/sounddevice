@@ -36,8 +36,11 @@ RUN apt-get install -y libsndfile1
 RUN pip3 install SoundFile
 
 COPY playFile.py ./
-
 ADD playFile.py /
+COPY wireALC_3.py ./
+ADD wireALC_3.py /
+
+
 ADD PinkPanther30_a.wav /
 RUN echo "\n.\n.\n..............................ls"
 RUN echo $(ls)
