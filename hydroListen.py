@@ -39,7 +39,7 @@ frac2 = 1.0-frac1
 
 import sounddevice as sd
 
-def callback(indata, outdata, frames, time, status):git config --global user.name
+def callback(indata, outdata, frames, time, status):
     global aveInput, bufferCnt
     if status:
         print("status = ", status)
