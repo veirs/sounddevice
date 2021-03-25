@@ -34,19 +34,23 @@ parser.add_argument('-a', '--averaging',type=float,help='fraction of new data ~0
 args = parser.parse_args()
 print(args)
 aveInput = 1
-frac1 = 0.05 #args.averaging
+bufferCnt = 0
+frac1 = args.averaging
 frac2 = 1.0-frac1
 
 import sounddevice as sd
 
 def callback(indata, outdata, frames, time, status):
-    global aveInput
+    global aveInput, bufferCnt
     if status:
         print(status)
     volume_norm = np.linalg.norm(indata)
-    #print(volume_norm)
     aveInput = frac2*aveInput + frac1*volume_norm
     gain = args.ALC_volume/aveInput
+    bufferCnt += 1
+    if bufferCnt % 10 == 0:
+        print("Input Volume=",volume_norm, "Gain =", gain)
+    
     indata = indata * gain
     outdata[:] = indata
 
