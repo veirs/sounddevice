@@ -20,8 +20,8 @@ CMD ["/bin/bash"]
 #install Python and pip  I guess this is pip3
 RUN apt-get install -y python3-dev
 RUN apt-get install -y python3-pip
-RUN echo $("which pip3")
-RUN echo $(which pip3)    #  WHY IS pip3 NOT reporting its location?  It is used to install stuff below
+#RUN echo $("which pip3")
+#RUN echo $(which pip3)    #  WHY IS pip3 NOT reporting its location?  It is used to install stuff below
 
 RUN pip3 install numpy
 
@@ -35,14 +35,17 @@ RUN pip3 install sounddevice
 RUN apt-get install -y libsndfile1
 RUN pip3 install SoundFile
 
-COPY playFile.py ./
-ADD playFile.py /
-COPY hydroListen.py ./
-ADD hydroListen.py /
+#COPY playFile.py ./
+#ADD playFile.py /
+COPY hydrolisten.py ./
+ADD hydrolisten.py /
 
 
 #ADD PinkPanther30_a.wav /
 #RUN echo "\n.\n.\n..............................ls"
 #RUN echo $(ls)
 #RUN ["python3", "playFile.py"]  # this should play the wav file on the default output port
+
+#RUN ["python3", "hydrolisten.py -i 'hw:1,0' -o 'hw:1,0' -c 1 -s 48000 -a 0.05 -v 2" ]
+#RUN ["python3", "hydrolisten.py"]
 
