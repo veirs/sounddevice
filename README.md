@@ -13,7 +13,7 @@ docker commands:
 
 docker build -t "docker_sd_0:v1" .
 
-docker run -it --device /dev/snd 781102bbff60 bin/bash  % number is container created by docker build
+docker run -it --device /dev/snd 781102bbff60 bin/bash  # number is container created by docker build
 
 python hydrolisten.py   # to run the script
 
