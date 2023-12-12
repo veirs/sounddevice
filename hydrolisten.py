@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Pass input directly to output with automatic gain control  
+./hydrolisten.py -i 'hw:0,0' -o 'hw:0,0' -c 1 -s 48000 -a 0.05 -v 2       # Integrated Input/Output board
 ./hydrolisten.py -i 'hw:1,0' -o 'hw:1,0' -c 1 -s 48000 -a 0.05 -v 2       # PiSound board in Rpi or  USB sound card inserted
 ./hydrolisten.py -i 'hw:2,0' -o 'hw:2,0' -c 1 -s 48000 -a 0.05 -v 2       hifiberry hat soundboard
 See https://www.assembla.com/spaces/portaudio/subversion/source/HEAD/portaudio/trunk/test/patest_wire.c
