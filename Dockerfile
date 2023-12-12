@@ -3,8 +3,9 @@
 #FROM resin/raspberry-pi-node:8
 #FROM arm32v7/python:3.7-buster
 # for Non-Rpi computer
-FROM python:3.10-slim-buster        
-
+#FROM python:3.10-slim-buster  
+# for Rpi and Balena
+FROM balenalib/raspberrypi4-64-ubuntu:latest
 MAINTAINER Val V <vveirs@coloradocollege.edu>
 
 # upgrade OS
